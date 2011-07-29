@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuzz xmlns="http://www.net-ninja.net/fivebelow.xsd">
+<!-- Please see the README.txt for a comprehensive understanding -->
+
+	<global>
+		<logpath>c:\fuzz\log\</logpath>
+		<timeout_delay>4</timeout_delay>
+		<!-- startfile and endfile are inclusive values -->
+		<startfile>43</startfile>
+		<endfile>45</endfile>
+		<modes>
+			<mode_name>generate</mode_name>
+			<mode_name>fuzz</mode_name>
+		</modes>
+	</global>
+
+	<fuzztest>
+		<technique_name>byteflip - flip all the bytes</technique_name>
+		<fuzzbyte>0xff</fuzzbyte>
+		<start_byte_location>0</start_byte_location>
+		<end_byte_location>200</end_byte_location>
+		<!-- only use 2, 4 or 8 as a value for now -->
+		<numberOfBytes>4</numberOfBytes>
+	</fuzztest>
+	
+	<fuzztest>
+		<technique_name>buffersmash</technique_name>
+		<fuzzbyte>0x41</fuzzbyte>
+		<!-- dont start at 0 until I fix the code -->
+		<start_buffer_size>200</start_buffer_size>
+		<end_buffer_size>2000</end_buffer_size>
+		<increments>200</increments>
+		<location>\</location>
+	</fuzztest>
+	
+</fuzz>
+<!--
+    FiveBelow
+    Copyright (C) 2011 Steven Seeley <steven.seeley@stratsec.net, steventhomasseeley@gmail.com>
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the Free
+    Software Foundation; either version 2 of the License, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+    more details.
+
+    You should have received a copy of the GNU General Public License along with
+    this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+    Place, Suite 330, Boston, MA 02111-1307 USA
+-->
