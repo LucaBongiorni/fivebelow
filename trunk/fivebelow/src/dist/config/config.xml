@@ -8,10 +8,7 @@
 		<!-- startfile and endfile are inclusive values -->
 		<startfile>43</startfile>
 		<endfile>45</endfile>
-		<modes>
-			<mode_name>generate</mode_name>
-			<mode_name>fuzz</mode_name>
-		</modes>
+		<arguments>{FILE}</arguments>
 	</global>
 
 	<fuzztest>

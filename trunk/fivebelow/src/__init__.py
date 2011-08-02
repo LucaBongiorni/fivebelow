@@ -113,6 +113,7 @@ def processMode():
                 confirmSettings += ("(+) Fuzzing time is estimated to be <= %s %s\r\n" % (monitorAndLog.getCalculatedFuzzTime()))
                 confirmSettings += ("(+) Fuzzing with %s files\r\n" % (monitorAndLog.numberOfFuzzFiles))
                 confirmSettings += ("(+) Fuzzing executable %s \r\n" % (options.executable))
+                confirmSettings += ("(+) Fuzzing executable %s \r\n" % (options.executable))
                 print confirmSettings
                 ready = raw_input("(+) Are these settings correct? ")
                 if ready[0] == "y" or ready[0] == "Y":
@@ -120,7 +121,7 @@ def processMode():
                     if options.log:
                         print "(+) Logging into '%s'" % (monitorAndLog.logpath)
                         monitorAndLog.setLoggingOn()
-                        monitorAndLog.log.write(banner())
+                        monitorAndLog.log.write(banner()+'\n')
                         monitorAndLog.log.write(confirmSettings)
                     monitorAndLog.startFuzzing()
                     print ("(+) Fuzzing completed at %s" % (timer()))

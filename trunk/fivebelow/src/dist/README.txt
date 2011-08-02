@@ -23,12 +23,21 @@ do not have to worry about interdependencies with python libraries such as pydas
 configuration:
 ==============
 
-The configuration file is located in fivebelow\config\config.xml. Before running, ensure that your 
-configuration folder and file exists in the fivebelow folder 
-
+The configuration file is located in <fivebelow dir>\config\config.xml. 
+Before running, ensure that your configuration folder and file exists in the fivebelow folder.
 The config file consists of:
+
 - standard "fuzztests" which are the fuzz test cases.
 - global parameters to set for fuzzing
+
+Global options
+--------------
+The researcher can configure the fuzzer the following way:
+
+- logpath: The log path where fuzz logs are generated after a fuzzing run
+- time_delay: The amount of time to wait before terminating the process. That way if the process hangs, it will be canned.
+- startfile/endfile: the fuzz files to start and end at. If you generate 2000 files, you may only want to fuzz half now and do more later
+- arguments: the arguments to include. By default it will set {FILE} indicating just a file as the argument.
 
 example usage:
 ==============

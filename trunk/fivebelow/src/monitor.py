@@ -290,8 +290,8 @@ class monitor(object):
             tempfuzzfile = self.fuzzfolder + str(i) + self.getExtension()
             tempargs = self.arguments.replace("{FILE}", tempfuzzfile)
             dbg.load(self.executable, tempargs)
+            
         dbg.set_callback(EXCEPTION_ACCESS_VIOLATION,self.checkAccessViolation)
-        
         pid = self.findPid(dbg, self.getExecutableName())
         whatWeAreFuzzing = ("(+) Fuzzing pid %s with file %s%s%s" 
         % (pid,self.fuzzfolder, str(i), self.getExtension()))
