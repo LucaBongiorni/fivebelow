@@ -120,7 +120,7 @@ class monitor(object):
             getcontext().prec = 6
             self.fuzzTime = Decimal(self.timeout_delay) * Decimal(self.numberOfFuzzFiles)
             
-            
+        # get the arguments
         self.arguments = self.xmldoc.getElementsByTagName('arguments')
         self.arguments = str(self.arguments.item(0).childNodes[0].data)
         
@@ -284,7 +284,12 @@ class monitor(object):
     def loadExecutable(self, i):
         dbg = pydbg()
         t = threading.Thread(target=self.watch, args=(dbg,))
-        dbg.load(self.executable, self.fuzzfolder + str(i) + self.getExtension())
+        if self.arguments == "{FILE}":
+            dbg.load(self.executable, self.fuzzfolder + str(i) + self.getExtension())
+        else:
+            tempfuzzfile = self.fuzzfolder + str(i) + self.getExtension()
+            tempargs = self.arguments.replace("{FILE}", tempfuzzfile)
+            dbg.load(self.executable, tempargs)
         dbg.set_callback(EXCEPTION_ACCESS_VIOLATION,self.checkAccessViolation)
         
         pid = self.findPid(dbg, self.getExecutableName())
