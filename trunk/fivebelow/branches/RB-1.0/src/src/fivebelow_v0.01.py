@@ -2,8 +2,6 @@
 Created on Jul 27, 2011
 
 @author: Steve
-test 
-test again
 '''
 import sys
 import re

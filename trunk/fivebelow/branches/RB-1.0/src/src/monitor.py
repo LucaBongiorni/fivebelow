@@ -33,7 +33,7 @@ class monitor(object):
         # change this for the configuration file
         #self.timeout = 4
         try:
-            self.xmldata = open(os.path.dirname(__file__) + "\\..\\config\\config.xml").read()
+            self.xmldata = open(os.path.dirname(__file__) + "\\config\\config.xml").read()
         except:
             print ("(!) Configuration file not found")
             sys.exit()
@@ -56,8 +56,6 @@ class monitor(object):
         if not os.path.exists(self.fuzzfolder):
             print "(-) fuzz folder does not exist"
             sys.exit()
-        
-        #self.samplefile = samplefile
 
         # number of files in our fuzz directory
         # this seems like a bit of effort under windows
@@ -121,6 +119,10 @@ class monitor(object):
             # calculate the approximate total time to fuzz to 6 decimal places
             getcontext().prec = 6
             self.fuzzTime = Decimal(self.timeout_delay) * Decimal(self.numberOfFuzzFiles)
+            
+            
+        self.arguments = self.xmldoc.getElementsByTagName('arguments')
+        self.arguments = str(self.arguments.item(0).childNodes[0].data)
         
     # get methods
     def getExecutableName(self):
