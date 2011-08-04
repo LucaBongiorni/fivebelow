@@ -27,7 +27,7 @@
 		<start_buffer_size>200</start_buffer_size>
 		<end_buffer_size>2000</end_buffer_size>
 		<increments>200</increments>
-		<location>\</location>
+		<location>:</location>
 	</fuzztest>
 	
 </fuzz>

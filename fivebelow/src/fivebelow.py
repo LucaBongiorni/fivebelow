@@ -111,9 +111,9 @@ def processMode():
             if monitorAndLog.isValidOutputFolder():
                 confirmSettings = ("(+) Fuzzing file format '%s'\r\n" % (monitorAndLog.getExtension()))
                 confirmSettings += ("(+) Fuzzing time is estimated to be <= %s %s\r\n" % (monitorAndLog.getCalculatedFuzzTime()))
-                confirmSettings += ("(+) Fuzzing with %s files\r\n" % (monitorAndLog.numberOfFuzzFiles))
+                confirmSettings += ("(+) Fuzzing with %s files\r\n" % (monitorAndLog.numberOfFuzzFiles+1))
                 confirmSettings += ("(+) Fuzzing executable %s \r\n" % (options.executable))
-                confirmSettings += ("(+) Fuzzing executable %s \r\n" % (options.executable))
+                confirmSettings += ("(+) Using arguments '%s' \r\n" % (monitorAndLog.arguments))
                 print confirmSettings
                 ready = raw_input("(+) Are these settings correct? ")
                 if ready[0] == "y" or ready[0] == "Y":
