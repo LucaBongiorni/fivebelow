@@ -32,10 +32,11 @@ class monitor(object):
         self.logging = False
         # change this for the configuration file
         #self.timeout = 4
+        # attempt to read the config file
         try:
-            self.xmldata = open(os.path.dirname(__file__) + "\\config\\config.xml").read()
+            self.xmldata = open(os.path.dirname(__file__) + "\\..\\config\\config.xml").read()
         except:
-            print ("(!) Configuration file not found")
+            print ("(!) Configuration file not found!")
             sys.exit()
         # check that we can parse the XML config file
         try:
@@ -307,6 +308,4 @@ class monitor(object):
         for i in range(self.startfile,self.endfile+1):
             t = threading.Thread(target=self.loadExecutable, args=(i,))
             t.start()
-            # one process at the time
             t.join()
-        
